@@ -18,14 +18,16 @@ h6 {
   color: white;
   text-decoration: underline;
 }
-a {
-  color: white;
-}
+
 #microscope-img {
   color: #90a5ca;
 }
 button {
   margin: 3px;
+}
+footer {
+  position: relative;
+  left: 400px;
 }
 
 .logo {
@@ -40,6 +42,10 @@ button {
   border-radius: 30px;
   filter: drop-shadow(10px 10px);
 }
+.temp-unit {
+  color: white;
+}
+
 .input-icons {
   background-image: url("/media/examples/border-diamonds.png") 30;
   font-size: 10px;
@@ -88,5 +94,14 @@ button {
   outline-color: black;
 }
 .bottom-temp {
+  color: #17a2b8;
+}
+
+.git-link {
+  color: blue;
+  text-decoration: none;
+  font-size: 15px;
+}
+.my-name {
   color: #17a2b8;
 }

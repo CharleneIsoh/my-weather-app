@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RayN Weather App</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/81029e98aa.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <header>
+          <div class="mb-4 ml-0">
+            <div class="col">
+              <span class="logo">
+                RayN Weather App<br />
+                <img class = "app-logo" src= media/undrawweatherappicon.png alt=
+                "Woman on a cloud Icon">
+              </span>
+            </div>
+          </div>
+
+          <div class="mb-5 p-3 shadow-lg text-white">
+            <div class="col mr--1">
+              <form id="search-form">
+                <div class="city-search-circle">
+                  <div class="input-icons">
+                    <i class="fas fa-search-location" id="microscope-img"></i>
+                    <input
+                      class="input-fieldtype"
+                      id="search-circle"
+                      placeholder="Enter City"
+                      input="text"
+                    />
+                  </div>
+                </div>
+                <div class="col ml-4 p-1">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-info"
+                    id="search-button"
+                  >
+                    Search-city
+                  </button>
+                </div>
+                <div class="ml-1 p-1">
+                  <div class="col">
+                    <button
+                      type="submit"
+                      class="btn btn-outline-info"
+                      id="current-button"
+                    >
+                      Current-city
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </header>
+
+        <div class="row">
+          <div class="col">
+            <div class="border p-5 mt-5 ml-5">
+              <div class="full-search-circle" class="row">
+                <div class="col">
+                  <h1 class="current-state">New York</h1>
+                  <div class="row">
+                    <div class="col">
+                      <h5>
+                        <i class="fas fa-cloud-showers-heavy"></i>
+                        <span id="precip">:20%</span>
+                        <br />
+                        <img
+                          class="humidity-icon"
+                          src="https://image.flaticon.com/icons/svg/777/777610.svg"
+                          alt="humidity-icon"
+                        />:<span id="humidity">40%</span>
+                      </h5>
+                    </div>
+                    <div class="col">
+                      <h4 class="current-temp">
+                        82°F
+                        <img
+                          src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                          alt="sun-icon"
+                        />
+                      </h4>
+                    </div>
+                    <div class="col ml-2">
+                      <i class="fas fa-wind">:</i>
+                      <h5 id="wind">4mph</h5>
+                    </div>
+                  </div>
+                  <div class="mb-5">
+                    <div class="col">
+                      <h6>
+                        <a href="#" id="cel-temp">C°</a>|
+                        <a href="#" id="far-temp">F°</a>
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <div class="current-date">
+          <div class="row">
+            <div class="col">
+              <span id="current-date">Tuesday 28| July</span>
+              <strong>Today</strong>
+              <br />
+              <span id="current-time">10:00:00 am</span>
+              <br />
+              93°| 71°
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="full-forecast">
+        <div class="border rounded-corner shadow-lg p-5 mt-5 mr-5 mb-5">
+          <div class="row">
+            <div class="col-2">
+              Wed
+              <br />
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                alt="sun-icon"
+              />
+              <br />
+              <div class="top-temp">93°</div>
+              <br />
+              <div class="bottom-temp">69°</div>
+            </div>
+
+            <div class="col-2">
+              Thur
+              <br />
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                alt="sun-icon"
+              />
+              <br />
+              <div class="top-temp">91°</div>
+              <br />
+              <div class="bottom-temp">71°</div>
+            </div>
+
+            <div class="col-2">
+              Fri
+              <br />
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/rain_heavy.png"
+                alt="rain-icon"
+              />
+              <br />
+
+              <div class="top-temp">87°</div>
+              <br />
+
+              <div class="bottom-temp">69°</div>
+            </div>
+
+            <div class="col-2">
+              Sat
+              <br />
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/thunderstorms.png"
+                alt="thunderrain-icon"
+              />
+              <br />
+              <div class="top-temp">89°</div>
+              <br />
+              <div class="bottom-temp">71°</div>
+            </div>
+            <div class="col-2">
+              Sun
+              <br />
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/thunderstorms.png"
+                alt="thunderrain-icon"
+              />
+              <br />
+              <div class="top-temp">87°</div>
+              <br />
+              <div class="bottom-temp">69°</div>
+            </div>
+            <div class="col-2">
+              Mon
+              <br />
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/thunderstorms.png"
+                alt="thunderrain-icon"
+              />
+              <br />
+              <div class="top-temp">87°</div>
+              <br />
+              <div class="bottom-temp">67°</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/script.js"></script>
+  </body>
+</html>

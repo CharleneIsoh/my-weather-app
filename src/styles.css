@@ -1,0 +1,92 @@
+header {
+  color: #17a2b8;
+  font-weight: 900px;
+}
+body {
+  background-image: linear-gradient(
+    to top,
+    #f3e7e9 0%,
+    #e3eeff 99%,
+    #e3eeff 100%
+  );
+  font-family: "Cinzel", serif;
+  font-weight: 800;
+  text-shadow: 0 1px 20px gray;
+}
+
+h6 {
+  color: white;
+  text-decoration: underline;
+}
+a {
+  color: white;
+}
+#microscope-img {
+  color: #90a5ca;
+}
+button {
+  margin: 3px;
+}
+
+.logo {
+  position: relative;
+  left: 15px;
+}
+.app-logo {
+  width: 80px;
+  background: #e6edfb;
+  position: relative;
+  left: 50px;
+  border-radius: 30px;
+  filter: drop-shadow(10px 10px);
+}
+.input-icons {
+  background-image: url("/media/examples/border-diamonds.png") 30;
+  font-size: 10px;
+  text-align: center;
+}
+.input-fieldtype {
+  border: solid #97abce;
+  border-radius: 10px;
+  background: (rgba 0, 0, 0, 0.4);
+}
+.humidity-icon {
+  width: 25px;
+}
+
+.full-search-circle {
+  text-align: center;
+  border-radius: 200px;
+
+  border-color: #97abce;
+  box-shadow: 30px 30px 10px #90a5ca;
+}
+
+.current-date {
+  text-align: center;
+  color: #17a2b8;
+}
+.current-state {
+  font-size: 40px;
+  color: #17a2b8;
+}
+.current-temp {
+  font-size: 60px;
+  color: #17a2b8;
+}
+
+.col-2 {
+  color: #17a2b8;
+}
+.full-forecast {
+  list-style: none;
+  background: linear-gradient (lightblue, lightslategray);
+  color: white;
+}
+.top-temp {
+  color: #17a2b8;
+  outline-color: black;
+}
+.bottom-temp {
+  color: #17a2b8;
+}

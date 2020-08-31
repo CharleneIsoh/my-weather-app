@@ -72,6 +72,20 @@ if (searchHandle && searchCircle !== "") {
   let searchEvent2 = searchCircle.addEventListener("submit", searchButton);
 }
 
+function showCurrentCity(event) {
+  event.preventDefault();
+  let currentPosition = Geolocation.getCurrentPosition();
+  console.log(currentPosition);
+  let apiKey = `370334c8b45ae9d3140c8d2756c6dc22`;
+  let metric = "metric";
+  let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather?q=`;
+  let apiUrl = `${apiEndPoint}&appid=${apiKey}&units=${metric}`;
+  axios.get(apiUrl).then(displayCurrentWeatherCondition);
+}
+
+let currentCity = document.querySelector("#current-button");
+addEventListener.currentCity("submit", showCurrentCity);
+
 function temperatureChangeCel(event) {
   event.preventDefault();
   let currentTemp = document.querySelector(".current-temp");

@@ -48,6 +48,7 @@ function displayWeatherCondition(response) {
     response.data.wind.speed
   )} mph`;
 }
+
 //This is information that will automatically show up when the page is rendered//
 
 function displayCustomaryState(response) {
@@ -56,6 +57,10 @@ function displayCustomaryState(response) {
   h1Element.innerHTML = response.data.name;
   let h4Element = document.querySelector("h4");
   h4Element.innerHTML = `${Math.round(response.data.main.temp)}°C`;
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = `${response.data.main.humidity}%`;
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = Matth.round(response.data.wind.speed);
 }
 let city = `New York`;
 let h1Element = document.querySelector("h1");
@@ -65,6 +70,7 @@ let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}`;
 let apiUrl = `${apiEndPoint}&appid=${apiKey}&units=${metric}`;
 axios.get(apiUrl).then(displayCustomaryState);
 
+//By clicking the search button or pressing enter this will allow the correct city information to appear//
 function searchButton(event) {
   event.preventDefault();
   let searchCircle = document.querySelector("#search-circle");
@@ -84,6 +90,7 @@ let searchHandle = document.querySelector("#search-button");
 let searchEvent = searchHandle.addEventListener("click", searchButton);
 let searchEvent2 = searchCircle.addEventListener("submit", searchButton);
 
+// When the "Current city" button is clicked this will allow that information to appear//
 function displayCurrentWeatherCondition(response) {
   let temp = Math.round(response.data.main.temp);
   let h1 = document.querySelector("h1");
@@ -123,6 +130,7 @@ function temperatureChangeCel(event) {
   />`;
 }
 
+//this is for the unit change to show correct unit/temp data//
 function temperatureChangeFah(event) {
   event.preventDefault();
   let currentTemp = document.querySelector(".current-temp");

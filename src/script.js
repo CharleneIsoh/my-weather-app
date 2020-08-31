@@ -48,6 +48,22 @@ function displayWeatherCondition(response) {
     response.data.wind.speed
   )} mph`;
 }
+//This is information that will automatically show up when the page is rendered//
+
+function displayCustomaryState(response) {
+  console.log(response);
+  let h1Element = document.querySelector("h1");
+  h1Element.innerHTML = response.data.name;
+  let h4Element = document.querySelector("h4");
+  h4Element.innerHTML = `${Math.round(response.data.main.temp)}°C`;
+}
+let city = `New York`;
+let h1Element = document.querySelector("h1");
+let apiKey = `370334c8b45ae9d3140c8d2756c6dc22`;
+let metric = "metric";
+let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}`;
+let apiUrl = `${apiEndPoint}&appid=${apiKey}&units=${metric}`;
+axios.get(apiUrl).then(displayCustomaryState);
 
 function searchButton(event) {
   event.preventDefault();
@@ -65,7 +81,6 @@ function searchButton(event) {
 
 let searchCircle = document.querySelector("#search-circle");
 let searchHandle = document.querySelector("#search-button");
-
 let searchEvent = searchHandle.addEventListener("click", searchButton);
 let searchEvent2 = searchCircle.addEventListener("submit", searchButton);
 

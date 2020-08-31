@@ -54,13 +54,25 @@ function displayWeatherCondition(response) {
 function displayCustomaryState(response) {
   console.log(response);
   let h1Element = document.querySelector("h1");
-  h1Element.innerHTML = response.data.name;
   let h4Element = document.querySelector("h4");
-  h4Element.innerHTML = `${Math.round(response.data.main.temp)}°C`;
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = `${response.data.main.humidity}%`;
   let windElement = document.querySelector("#wind");
-  windElement.innerHTML = Math.round(response.data.wind.speed);
+  let icon = response.data.weather[0].icon;
+  let currentWeatherIcon = document.querySelector("#current-weather-icon");
+  console.log(currentWeatherIcon);
+
+  h1Element.innerHTML = response.data.name;
+  h4Element.innerHTML = `${Math.round(response.data.main.temp)}°C`;
+  humidityElement.innerHTML = `${response.data.main.humidity}%`;
+  windElement.innerHTML = `${Math.round(response.data.wind.speed)}mph`;
+  currentWeatherIcon.setAttribute(
+    `src`,
+    `http://openweathermap.org/img/wn/${icon}@2x.png`
+  );
+  currentWeatherIcon.setAttribute(
+    `alt`,
+    `${response.data.weather[0].description}`
+  );
 }
 let city = `New York`;
 let h1Element = document.querySelector("h1");

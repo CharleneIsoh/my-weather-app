@@ -66,12 +66,8 @@ function searchButton(event) {
 let searchCircle = document.querySelector("#search-circle");
 let searchHandle = document.querySelector("#search-button");
 
-if (searchCircle.value > 0) {
-  let searchEvent = searchHandle.addEventListener("click", searchButton);
-  let searchEvent2 = searchCircle.addEventListener("submit", searchButton);
-} else {
-  console.log(`Please enter your City!`);
-}
+let searchEvent = searchHandle.addEventListener("click", searchButton);
+let searchEvent2 = searchCircle.addEventListener("submit", searchButton);
 
 function displayCurrentWeatherCondition(response) {
   let temp = Math.round(response.data.main.temp);

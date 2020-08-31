@@ -60,7 +60,7 @@ function displayCustomaryState(response) {
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = `${response.data.main.humidity}%`;
   let windElement = document.querySelector("#wind");
-  windElement.innerHTML = Matth.round(response.data.wind.speed);
+  windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 let city = `New York`;
 let h1Element = document.querySelector("h1");

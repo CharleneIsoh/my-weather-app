@@ -70,7 +70,7 @@ if (searchCircle.value > 0) {
   let searchEvent = searchHandle.addEventListener("click", searchButton);
   let searchEvent2 = searchCircle.addEventListener("submit", searchButton);
 } else {
-  alert(`Please enter your City!`);
+  console.log(`Please enter your City!`);
 }
 
 function displayCurrentWeatherCondition(response) {

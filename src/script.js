@@ -39,7 +39,6 @@ date.innerHTML = `${days[currentDay]} ${currentDate} | ${months[currentMonth]}`;
 time.innerHTML = `${hour}:${minute}`;
 
 function displayWeatherCondition(response) {
-  console.log(response);
   document.querySelector(".current-state").innerHTML = response.data.name;
   document.querySelector("h4").innerHTML = `${Math.round(
     response.data.main.temp
@@ -66,25 +65,37 @@ function searchButton(event) {
 
 let searchCircle = document.querySelector("#search-circle");
 let searchHandle = document.querySelector("#search-button");
+let searchEvent = searchHandle.addEventListener("click", searchButton);
+let searchEvent2 = searchCircle.addEventListener("submit", searchButton);
 
-if (searchHandle && searchCircle !== "") {
-  let searchEvent = searchHandle.addEventListener("click", searchButton);
-  let searchEvent2 = searchCircle.addEventListener("submit", searchButton);
+function displayCurrentWeatherCondition(response) {
+  let temp = Math.round(response.data.main.temp);
+  let h1 = document.querySelector("h1");
+  h1.innerHTML = `${response.data.name}`;
+  let h4 = document.querySelector("h4");
+  h4.innerHTML = `${temp}°C   <img
+                          src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                          alt="sun-icon"
+                        />`;
+}
+
+function showCurrentPosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = `370334c8b45ae9d3140c8d2756c6dc22`;
+  let metric = "metric";
+  let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather?`;
+  let apiUrl = `${apiEndPoint}lat=${lat}&lon=${lon}&appid=${apiKey}&units=${metric}`;
+  axios.get(apiUrl).then(displayCurrentWeatherCondition);
 }
 
 function showCurrentCity(event) {
   event.preventDefault();
-  let currentPosition = Geolocation.getCurrentPosition();
-  console.log(currentPosition);
-  let apiKey = `370334c8b45ae9d3140c8d2756c6dc22`;
-  let metric = "metric";
-  let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather?q=`;
-  let apiUrl = `${apiEndPoint}&appid=${apiKey}&units=${metric}`;
-  axios.get(apiUrl).then(displayCurrentWeatherCondition);
+  navigator.geolocation.getCurrentPosition(showCurrentPosition);
 }
 
-let currentCity = document.querySelector("#current-button");
-addEventListener.currentCity("submit", showCurrentCity);
+let currentCityButton = document.querySelector("#current-button");
+currentCityButton.addEventListener("click", showCurrentCity);
 
 function temperatureChangeCel(event) {
   event.preventDefault();

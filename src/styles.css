@@ -15,7 +15,6 @@ body {
 }
 h5 {
   border-radius: 30px;
-  box-shadow: 10px 10px 5px #17a2b8;
 }
 h6 {
   color: white;
@@ -89,10 +88,14 @@ footer {
 .current-date {
   text-align: center;
   color: #17a2b8;
+  position: relative;
+  top: 20px;
 }
 .current-state {
   font-size: 40px;
   color: #17a2b8;
+  position: relative;
+  top: 30px;
 }
 .current-temp {
   font-size: 60px;

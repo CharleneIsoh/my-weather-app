@@ -52,7 +52,6 @@ function displayWeatherCondition(response) {
 //This is information that will automatically show up when the page is rendered//
 
 function displayCustomaryState(response) {
-  console.log(response);
   let h1Element = document.querySelector("h1");
   let h4Element = document.querySelector("h4");
   let humidityElement = document.querySelector("#humidity");
@@ -90,7 +89,6 @@ function displayWeatherCondition(response) {
   let windElement = document.querySelector("#wind");
   let icon = response.data.weather[0].icon;
   let currentWeatherIcon = document.querySelector("#current-weather-icon");
-  console.log(currentWeatherIcon);
 
   h1Element.innerHTML = response.data.name;
   h4Element.innerHTML = `${Math.round(response.data.main.temp)}°C`;
@@ -127,14 +125,16 @@ let searchEvent2 = searchCircle.addEventListener("submit", searchButton);
 
 // When the "Current city" button is clicked this will allow that information to appear//
 function displayCurrentWeatherCondition(response) {
+  console.log(response);
   let temp = Math.round(response.data.main.temp);
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${response.data.name}`;
   let h4 = document.querySelector("h4");
-  h4.innerHTML = `${temp}°C   <img
-                          src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-                          alt="sun-icon"
-                        />`;
+  h4.innerHTML = `${temp}°C `;
+  let icon = response.data.weather[0].icon;
+  let weatherDescription = response.data.weather[0].main;
+  h4.setAttribute(`src`, `http://openweathermap.org/img/wn/${icon}@2x.png`);
+  h4.setAttribute(`alt`, `${weatherDescription}`);
 }
 
 function showCurrentPosition(position) {

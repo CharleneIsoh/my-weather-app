@@ -40,80 +40,84 @@
             </div>
           </div>
 
-          <div class="mb-5 p-3 shadow-lg text-white">
-            <div class="col mr--1">
-              <form id="search-form">
-                <div class="city-search-circle">
-                  <div class="input-icons">
-                    <i class="fas fa-search-location" id="microscope-img"></i>
-                    <input
-                      class="input-fieldtype"
-                      id="search-circle"
-                      placeholder="Enter City"
-                      input="text"
-                    />
+          <div class="search-box">
+            <div class="mb-5 p-3 shadow-lg text-white">
+              <div class="col mr--1">
+                <form id="search-form">
+                  <div class="city-search-circle">
+                    <div class="input-icons">
+                      <i class="fas fa-search-location" id="microscope-img"></i>
+                      <input
+                        class="input-fieldtype"
+                        id="search-circle"
+                        placeholder="Enter City"
+                        input="text"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div class="col ml-4 p-1">
-                  <button
-                    type="submit"
-                    class="btn btn-outline-info"
-                    id="search-button"
-                  >
-                    Search-city
-                  </button>
-                </div>
-                <div class="ml-1 p-1">
-                  <div class="col">
+                  <div class="col ml-4 p-1">
                     <button
                       type="submit"
                       class="btn btn-outline-info"
-                      id="current-button"
+                      id="search-button"
                     >
-                      Current-city
+                      Search-city
                     </button>
                   </div>
-                </div>
-              </form>
+                  <div class="ml-1 p-1">
+                    <div class="col">
+                      <button
+                        type="submit"
+                        class="btn btn-outline-info"
+                        id="current-button"
+                      >
+                        Current-city
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </header>
 
-        <div class="row">
-          <div class="col">
-            <div class="border p-5 mt-5 ml-5">
-              <div class="full-search-circle" class="row">
-                <div class="col">
-                  <h1 class="current-state"></h1>
-                  <div class="row">
-                    <div class="col mt-2">
-                      <h5>
+        <div class="full-search-circle-wrapper">
+          <div class="row">
+            <div class="col">
+              <div class="border p-5 mt-5 ml-5">
+                <div class="full-search-circle" class="row">
+                  <div class="col">
+                    <h1 class="current-state"></h1>
+                    <div class="row">
+                      <div class="col mt-5">
+                        <h5>
+                          <img
+                            class="humidity-icon"
+                            src="https://image.flaticon.com/icons/svg/777/777610.svg"
+                            alt="humidity-icon"
+                          />:<br /><span id="humidity"></span>
+                        </h5>
+                      </div>
+                      <div class="col mt-4">
+                        <h4 class="current-temp"></h4>
                         <img
-                          class="humidity-icon"
-                          src="https://image.flaticon.com/icons/svg/777/777610.svg"
-                          alt="humidity-icon"
-                        />:<br /><span id="humidity"></span>
-                      </h5>
+                          src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                          alt="sun-icon"
+                          id="current-weather-icon"
+                        />
+                      </div>
+                      <div class="col ml-5 mt-5">
+                        <i class="fas fa-wind">:</i>
+                        <h5 id="wind">4mph</h5>
+                      </div>
                     </div>
-                    <div class="col">
-                      <h4 class="current-temp"></h4>
-                      <img
-                        src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-                        alt="sun-icon"
-                        id="current-weather-icon"
-                      />
-                    </div>
-                    <div class="col ml-5 mt-2">
-                      <i class="fas fa-wind">:</i>
-                      <h5 id="wind">4mph</h5>
-                    </div>
-                  </div>
-                  <div class="mb-5">
-                    <div class="col">
-                      <h6>
-                        <a class="temp-unit" href="#" id="cel-temp">C°</a>|
-                        <a class="temp-unit" href="#" id="far-temp">F°</a>
-                      </h6>
+                    <div class="mb-5">
+                      <div class="col">
+                        <h6>
+                          <a class="temp-unit" href="#" id="cel-temp">C°</a>|
+                          <a class="temp-unit" href="#" id="far-temp">F°</a>
+                        </h6>
+                      </div>
                     </div>
                   </div>
                 </div>

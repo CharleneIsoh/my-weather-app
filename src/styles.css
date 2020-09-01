@@ -13,7 +13,10 @@ body {
   font-weight: 800;
   text-shadow: 0 1px 20px gray;
 }
-
+h5 {
+  border-radius: 30px;
+  box-shadow: 10px 10px 5px #17a2b8;
+}
 h6 {
   color: white;
   text-decoration: underline;
@@ -32,8 +35,8 @@ footer {
 .container {
   border-style: ridge;
   border-radius: 20px;
-  margin: 0 auto;
-  display: center;
+  padding-left: 70px;
+  max-width: 1200px;
 }
 .logo {
   position: relative;
@@ -47,8 +50,18 @@ footer {
   border-radius: 30px;
   filter: drop-shadow(10px 10px);
 }
+.search-box {
+  position: relative;
+  left: 10px;
+}
+
+.full-search-circle-wrapper {
+  position: relative;
+  top: 50px;
+  left: 60px;
+}
 .temp-unit {
-  color: white;
+  color: #17a2b8;
 }
 
 .input-icons {

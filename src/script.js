@@ -125,16 +125,18 @@ let searchEvent2 = searchCircle.addEventListener("submit", searchButton);
 
 // When the "Current city" button is clicked this will allow that information to appear//
 function displayCurrentWeatherCondition(response) {
-  console.log(response);
   let temp = Math.round(response.data.main.temp);
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${response.data.name}`;
-  let h4 = document.querySelector("h4");
-  h4.innerHTML = `${temp}°C `;
+  let currentWeatherIcon = document.querySelector("#current-weather-icon");
+  currentWeatherIcon.innerHTML = `${temp}°C `;
   let icon = response.data.weather[0].icon;
   let weatherDescription = response.data.weather[0].main;
-  h4.setAttribute(`src`, `http://openweathermap.org/img/wn/${icon}@2x.png`);
-  h4.setAttribute(`alt`, `${weatherDescription}`);
+  currentWeatherIcon.setAttribute(
+    `src`,
+    `http://openweathermap.org/img/wn/${icon}@2x.png`
+  );
+  currentWeatherIcon.setAttribute(`alt`, `${weatherDescription}`);
 }
 
 function showCurrentPosition(position) {

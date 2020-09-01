@@ -29,7 +29,12 @@ footer {
   position: relative;
   left: 400px;
 }
-
+.container {
+  border-style: ridge;
+  border-radius: 20px;
+  margin: 0 auto;
+  display: center;
+}
 .logo {
   position: relative;
   left: 15px;

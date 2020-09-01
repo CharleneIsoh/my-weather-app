@@ -40,13 +40,13 @@ footer {
 }
 .logo {
   position: relative;
-  left: 15px;
+  left: 30px;
 }
 .app-logo {
   width: 80px;
   background: #e6edfb;
   position: relative;
-  left: 50px;
+  left: 40px;
   border-radius: 30px;
   filter: drop-shadow(10px 10px);
 }

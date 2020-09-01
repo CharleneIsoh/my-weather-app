@@ -59,7 +59,6 @@ function displayCustomaryState(response) {
   let windElement = document.querySelector("#wind");
   let icon = response.data.weather[0].icon;
   let currentWeatherIcon = document.querySelector("#current-weather-icon");
-  console.log(currentWeatherIcon);
 
   h1Element.innerHTML = response.data.name;
   h4Element.innerHTML = `${Math.round(response.data.main.temp)}°C`;
@@ -85,7 +84,6 @@ axios.get(apiUrl).then(displayCustomaryState);
 //By clicking the search button or pressing enter this will allow the correct city information to appear//
 
 function displayWeatherCondition(response) {
-  console.log(response);
   let h1Element = document.querySelector("h1");
   let h4Element = document.querySelector("h4");
   let humidityElement = document.querySelector("#humidity");

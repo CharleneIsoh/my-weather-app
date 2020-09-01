@@ -83,13 +83,38 @@ let apiUrl = `${apiEndPoint}&appid=${apiKey}&units=${metric}`;
 axios.get(apiUrl).then(displayCustomaryState);
 
 //By clicking the search button or pressing enter this will allow the correct city information to appear//
+
+function displayWeatherCondition(response) {
+  console.log(response);
+  let h1Element = document.querySelector("h1");
+  let h4Element = document.querySelector("h4");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let icon = response.data.weather[0].icon;
+  let currentWeatherIcon = document.querySelector("#current-weather-icon");
+  console.log(currentWeatherIcon);
+
+  h1Element.innerHTML = response.data.name;
+  h4Element.innerHTML = `${Math.round(response.data.main.temp)}°C`;
+  humidityElement.innerHTML = `${response.data.main.humidity}%`;
+  windElement.innerHTML = `${Math.round(response.data.wind.speed)}mph`;
+  currentWeatherIcon.setAttribute(
+    `src`,
+    `http://openweathermap.org/img/wn/${icon}@2x.png`
+  );
+  currentWeatherIcon.setAttribute(
+    `alt`,
+    `${response.data.weather[0].description}`
+  );
+}
+
 function searchButton(event) {
   event.preventDefault();
   let searchCircle = document.querySelector("#search-circle");
   let city = document.querySelector("#search-circle").value;
+  let h1Element = document.querySelector("h1");
   let currentState = document.querySelector(".current-state");
   currentState.innerHTML = `${searchCircle.value}`;
-
   let apiKey = `370334c8b45ae9d3140c8d2756c6dc22`;
   let metric = "metric";
   let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}`;

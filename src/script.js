@@ -38,6 +38,8 @@ let time = document.querySelector("#current-time");
 date.innerHTML = `${days[currentDay]} ${currentDate} | ${months[currentMonth]}`;
 time.innerHTML = `${hour}:${minute}`;
 
+//formatting hours
+
 function displayWeatherCondition(response) {
   document.querySelector(".current-state").innerHTML = response.data.name;
   document.querySelector("h4").innerHTML = `${Math.round(
@@ -104,6 +106,32 @@ function displayWeatherCondition(response) {
   );
 }
 
+function displayWeatherForecast(forecast) {
+  console.log(forecast.data.list[0]);
+  forecastElement = document.querySelector("#forecast-weather");
+  let forecastInfo = forecast.data.list[0];
+  let tempMax = Math.round(forecastInfo.main.temp_max);
+  let tempMin = Math.round(forecastInfo.main.temp_min);
+  let icon = forecastInfo.weather[0].icon;
+  let descrip = forecastInfo.weather[0].description;
+
+  forecastElement.innerHTML = `
+      <div class="col-2">
+              <h5>12:00</h5>
+
+              <br />
+              <img
+                src="http://openweathermap.org/img/wn/${icon}@2x.png"
+                alt= "${descrip}"
+              />
+              <br />
+              <div class="top-temp">${tempMax}°C</div>
+              <br />
+              <div class="bottom-temp">${tempMin}°C</div>
+            </div>
+`;
+}
+
 function searchButton(event) {
   event.preventDefault();
   let searchCircle = document.querySelector("#search-circle");
@@ -116,6 +144,10 @@ function searchButton(event) {
   let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}`;
   let apiUrl = `${apiEndPoint}&appid=${apiKey}&units=${metric}`;
   axios.get(apiUrl).then(displayWeatherCondition);
+
+  //call to display weather forecast//
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${metric}`;
+  axios.get(apiUrl).then(displayWeatherForecast);
 }
 
 let searchCircle = document.querySelector("#search-circle");

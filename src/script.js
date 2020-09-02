@@ -42,6 +42,7 @@ time.innerHTML = `${hour}:${minute}`;
 //formatting hours
 
 function formatHours(timestamp) {
+  let fullDate = new Date();
   let currentDay = fullDate.getDay();
   let hour = fullDate.getHours();
   if (hour < 10) {
@@ -50,10 +51,10 @@ function formatHours(timestamp) {
   let minute = fullDate.getMinutes();
   if (minute < 10) {
     minute = `0${fullDate.getMinutes()}`;
-
-    let day = days[currentDay];
-    return `${hour}:${minute}`;
   }
+
+  let day = days[currentDay];
+  return `${hour}:${minute}`;
 }
 
 //showing the currection humidity and wind icons
@@ -123,6 +124,8 @@ function displayWeatherCondition(response) {
     `${response.data.weather[0].description}`
   );
 }
+
+//this section  will display the correct forecast information//
 
 function displayWeatherForecast(forecast) {
   console.log(forecast.data.list[0]);

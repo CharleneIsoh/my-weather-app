@@ -25,6 +25,7 @@ let days = [
 
 let fullDate = new Date();
 let currentDay = fullDate.getDay();
+let day = days[currentDay];
 let currentDate = fullDate.getDate();
 let currentMonth = fullDate.getMonth();
 let hour = fullDate.getHours();
@@ -39,6 +40,23 @@ date.innerHTML = `${days[currentDay]} ${currentDate} | ${months[currentMonth]}`;
 time.innerHTML = `${hour}:${minute}`;
 
 //formatting hours
+
+function formatHours(timestamp) {
+  let currentDay = fullDate.getDay();
+  let hour = fullDate.getHours();
+  if (hour < 10) {
+    `0${fullDate.getHours}`;
+  }
+  let minute = fullDate.getMinutes();
+  if (minute < 10) {
+    minute = `0${fullDate.getMinutes()}`;
+
+    let day = days[currentDay];
+    return `${hour}:${minute}`;
+  }
+}
+
+//showing the currection humidity and wind icons
 
 function displayWeatherCondition(response) {
   document.querySelector(".current-state").innerHTML = response.data.name;
@@ -117,7 +135,7 @@ function displayWeatherForecast(forecast) {
 
   forecastElement.innerHTML = `
       <div class="col-2">
-              <h5>12:00</h5>
+              <h5>${formatHours(forecastInfo.dt * 1000)}</h5>
 
               <br />
               <img

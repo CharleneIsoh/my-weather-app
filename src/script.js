@@ -157,10 +157,9 @@ function showCurrentCity(event) {
 let currentCityButton = document.querySelector("#current-button");
 currentCityButton.addEventListener("click", showCurrentCity);
 
-//this is for the unit change to show correct unit/temp data//
+//this is for the unit change to show correctly unit/temp data//
 
 function displayWeatherCelUnit(response) {
-  console.log(response);
   let h1Element = document.querySelector("h1");
   let h4Element = document.querySelector("h4");
   let humidityElement = document.querySelector("#humidity");
@@ -172,6 +171,28 @@ function displayWeatherCelUnit(response) {
   h4Element.innerHTML = `${Math.round(response.data.main.temp)}°C`;
   humidityElement.innerHTML = `${response.data.main.humidity}%`;
   windElement.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
+  currentWeatherIcon.setAttribute(
+    `src`,
+    `http://openweathermap.org/img/wn/${icon}@2x.png`
+  );
+  currentWeatherIcon.setAttribute(
+    `alt`,
+    `${response.data.weather[0].description}`
+  );
+}
+
+function displayWeatherFahUnit(response) {
+  let h1Element = document.querySelector("h1");
+  let h4Element = document.querySelector("h4");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let icon = response.data.weather[0].icon;
+  let currentWeatherIcon = document.querySelector("#current-weather-icon");
+
+  h1Element.innerHTML = response.data.name;
+  h4Element.innerHTML = `${Math.round(response.data.main.temp)}°F`;
+  humidityElement.innerHTML = `${response.data.main.humidity}%`;
+  windElement.innerHTML = `${Math.round(response.data.wind.speed)}mph`;
   currentWeatherIcon.setAttribute(
     `src`,
     `http://openweathermap.org/img/wn/${icon}@2x.png`
@@ -195,12 +216,13 @@ function temperatureChangeCel(event) {
 
 function temperatureChangeFah(event) {
   event.preventDefault();
-  let currentTemp = document.querySelector(".current-temp");
-  currentTemp.innerHTML = `82°F 
-  <img
-    src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-    alt="sun-icon"
-  />`;
+  let h1 = document.querySelector(`h1`);
+  let city = h1.innerHTML;
+  let apiKey = `370334c8b45ae9d3140c8d2756c6dc22`;
+  let imperial = "imperial";
+  let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}`;
+  let apiUrl = `${apiEndPoint}&appid=${apiKey}&units=${imperial}`;
+  axios.get(apiUrl).then(displayWeatherFahUnit);
 }
 
 let celsiusTemperature = document.querySelector("#cel-temp");

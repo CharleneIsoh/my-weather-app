@@ -88,15 +88,15 @@ function displayNYForecast(response) {
                   forecastInfo.weather[0].icon
                 }@2x.png"
                 alt= "${forecastInfo.weather[0].description}"
-              />
-              <br />
+              /> <span class="vertical-line"></span>
+              <br /> 
               <div class="top-temp">${Math.ceil(
                 forecastInfo.main.temp_max
               )}°C</div>
-              <br />
+              <br /> 
               <div class="bottom-temp">${Math.floor(
                 forecastInfo.main.temp_min
-              )}°C</div>
+              )}°C</div> 
             </div>
 `;
   }

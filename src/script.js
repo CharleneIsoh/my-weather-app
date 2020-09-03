@@ -88,7 +88,7 @@ function displayNYForecast(response) {
                   forecastInfo.weather[0].icon
                 }@2x.png"
                 alt= "${forecastInfo.weather[0].description}"
-              /> <span class="vertical-line"></span>
+              /> 
               <br /> 
               <div class="top-temp">${Math.ceil(
                 forecastInfo.main.temp_max

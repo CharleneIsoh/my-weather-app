@@ -72,7 +72,6 @@ function displayWeatherCondition(response) {
 //This is information that will automatically show up when the page is rendered//
 
 function displayNYForecast(response) {
-  console.log(response);
   let forecastElement = document.querySelector("#forecast-weather");
   forecastElement.innerHTML = null;
   let forecastInfo = null;
@@ -104,7 +103,6 @@ function displayNYForecast(response) {
 }
 
 function displayCustomaryState(response) {
-  console.log(response);
   let h1Element = document.querySelector("h1");
   let h4Element = document.querySelector("h4");
   let humidityElement = document.querySelector("#humidity");
@@ -243,7 +241,7 @@ function showCurrentPosition(position) {
   let apiUrl = `${apiEndPoint}lat=${lat}&lon=${lon}&appid=${apiKey}&units=${metric}`;
   axios.get(apiUrl).then(displayCurrentWeatherCondition);
 
-  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${metric}`;
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${metric}`;
   axios.get(apiUrl).then(displayWeatherForecast);
 }
 

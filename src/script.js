@@ -42,8 +42,8 @@ time.innerHTML = `${hour}:${minute}`;
 //formatting hours
 
 function formatHours(timestamp) {
-  let fullDate = new Date();
-  let currentDay = fullDate.getDay();
+  let fullDate = new Date(timestamp);
+
   let hour = fullDate.getHours();
   if (hour < 10) {
     `0${fullDate.getHours}`;
@@ -185,11 +185,11 @@ function displayWeatherForecast(forecast) {
               <br />
               <div class="top-temp">${Math.ceil(
                 forecastInfo.main.temp_max
-              )}°C</div>
+              )}°</div>
               <br />
               <div class="bottom-temp">${Math.floor(
                 forecastInfo.main.temp_min
-              )}°C</div>
+              )}°</div>
             </div>
 `;
   }
@@ -242,6 +242,9 @@ function showCurrentPosition(position) {
   let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather?`;
   let apiUrl = `${apiEndPoint}lat=${lat}&lon=${lon}&appid=${apiKey}&units=${metric}`;
   axios.get(apiUrl).then(displayCurrentWeatherCondition);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${metric}`;
+  axios.get(apiUrl).then(displayWeatherForecast);
 }
 
 function showCurrentCity(event) {
@@ -307,6 +310,9 @@ function temperatureChangeCel(event) {
   let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}`;
   let apiUrl = `${apiEndPoint}&appid=${apiKey}&units=${metric}`;
   axios.get(apiUrl).then(displayWeatherCelUnit);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${metric}`;
+  axios.get(apiUrl).then(displayWeatherForecast);
 }
 
 function temperatureChangeFah(event) {
@@ -318,6 +324,9 @@ function temperatureChangeFah(event) {
   let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}`;
   let apiUrl = `${apiEndPoint}&appid=${apiKey}&units=${imperial}`;
   axios.get(apiUrl).then(displayWeatherFahUnit);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${imperial}`;
+  axios.get(apiUrl).then(displayWeatherForecast);
 }
 
 let celsiusTemperature = document.querySelector("#cel-temp");

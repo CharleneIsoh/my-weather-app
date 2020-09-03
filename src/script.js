@@ -53,7 +53,6 @@ function formatHours(timestamp) {
     minute = `0${fullDate.getMinutes()}`;
   }
 
-  let day = days[currentDay];
   return `${hour}:${minute}`;
 }
 
@@ -128,28 +127,54 @@ function displayWeatherCondition(response) {
 //this section  will display the correct forecast information//
 
 function displayWeatherForecast(forecast) {
-  console.log(forecast.data.list[0]);
+  console.log(forecast);
   forecastElement = document.querySelector("#forecast-weather");
   let forecastInfo = forecast.data.list[0];
-  let tempMax = Math.round(forecastInfo.main.temp_max);
-  let tempMin = Math.round(forecastInfo.main.temp_min);
-  let icon = forecastInfo.weather[0].icon;
-  let descrip = forecastInfo.weather[0].description;
-
+  console.log(forecastInfo);
   forecastElement.innerHTML = `
       <div class="col-2">
               <h5>${formatHours(forecastInfo.dt * 1000)}</h5>
 
               <br />
               <img
-                src="http://openweathermap.org/img/wn/${icon}@2x.png"
-                alt= "${descrip}"
+                src="http://openweathermap.org/img/wn/${
+                  forecastInfo.weather[0].icon
+                }@2x.png"
+                alt= "${forecastInfo.weather[0].description}"
               />
               <br />
-              <div class="top-temp">${tempMax}°C</div>
+              <div class="top-temp">${Math.round(
+                forecastInfo.main.temp_max
+              )}°C</div>
               <br />
-              <div class="bottom-temp">${tempMin}°C</div>
+              <div class="bottom-temp">${Math.round(
+                forecastInfo.main.temp_min
+              )}°C</div>
             </div>
+`;
+
+  forecastInfo = forecast.data.list[1];
+  console.log(forecastInfo);
+  forecastElement.innerHTML += `
+        <div class="col-2">
+            <h5>${formatHours(forecastInfo.dt * 1000)}</h5>
+
+            <br />
+            <img
+                src="http://openweathermap.org/img/wn/${
+                  forecastInfo.weather[0].icon
+                }@2x.png"
+                alt="${forecastInfo.weather[0].description}"
+            />
+            <br />
+            <div class="top-temp">${Math.round(
+              forecastInfo.main.temp_max
+            )}°C</div>
+            <br />
+            <div class="bottom-temp">${Math.round(
+              forecastInfo.main.temp_min
+            )}°C</div>
+        </div>
 `;
 }
 

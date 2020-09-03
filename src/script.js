@@ -71,7 +71,40 @@ function displayWeatherCondition(response) {
 
 //This is information that will automatically show up when the page is rendered//
 
+function displayNYForecast(response) {
+  console.log(response);
+  let forecastElement = document.querySelector("#forecast-weather");
+  forecastElement.innerHTML = null;
+  let forecastInfo = null;
+
+  for (let index = 0; index <= 5; index++) {
+    forecastInfo = response.data.list[index];
+    forecastElement.innerHTML += `
+      <div class="col">
+              <h5>${formatHours(forecastInfo.dt * 1000)}</h5>
+
+              <br />
+              <img
+                src="http://openweathermap.org/img/wn/${
+                  forecastInfo.weather[0].icon
+                }@2x.png"
+                alt= "${forecastInfo.weather[0].description}"
+              />
+              <br />
+              <div class="top-temp">${Math.round(
+                forecastInfo.main.temp_max
+              )}°C</div>
+              <br />
+              <div class="bottom-temp">${Math.round(
+                forecastInfo.main.temp_min
+              )}°C</div>
+            </div>
+`;
+  }
+}
+
 function displayCustomaryState(response) {
+  console.log(response);
   let h1Element = document.querySelector("h1");
   let h4Element = document.querySelector("h4");
   let humidityElement = document.querySelector("#humidity");
@@ -91,6 +124,11 @@ function displayCustomaryState(response) {
     `alt`,
     `${response.data.weather[0].description}`
   );
+  let metric = "metric";
+  let city = `New York`;
+  let apiKey = `370334c8b45ae9d3140c8d2756c6dc22`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${metric}`;
+  axios.get(apiUrl).then(displayNYForecast);
 }
 let city = `New York`;
 let h1Element = document.querySelector("h1");
@@ -127,12 +165,14 @@ function displayWeatherCondition(response) {
 //this section  will display the correct forecast information//
 
 function displayWeatherForecast(forecast) {
-  console.log(forecast);
-  forecastElement = document.querySelector("#forecast-weather");
-  let forecastInfo = forecast.data.list[0];
-  console.log(forecastInfo);
-  forecastElement.innerHTML = `
-      <div class="col-2">
+  let forecastElement = document.querySelector("#forecast-weather");
+  forecastElement.innerHTML = null;
+  let forecastInfo = null;
+
+  for (let index = 0; index <= 5; index++) {
+    forecastInfo = forecast.data.list[index];
+    forecastElement.innerHTML += `
+      <div class="col">
               <h5>${formatHours(forecastInfo.dt * 1000)}</h5>
 
               <br />
@@ -152,30 +192,7 @@ function displayWeatherForecast(forecast) {
               )}°C</div>
             </div>
 `;
-
-  forecastInfo = forecast.data.list[1];
-  console.log(forecastInfo);
-  forecastElement.innerHTML += `
-        <div class="col-2">
-            <h5>${formatHours(forecastInfo.dt * 1000)}</h5>
-
-            <br />
-            <img
-                src="http://openweathermap.org/img/wn/${
-                  forecastInfo.weather[0].icon
-                }@2x.png"
-                alt="${forecastInfo.weather[0].description}"
-            />
-            <br />
-            <div class="top-temp">${Math.round(
-              forecastInfo.main.temp_max
-            )}°C</div>
-            <br />
-            <div class="bottom-temp">${Math.round(
-              forecastInfo.main.temp_min
-            )}°C</div>
-        </div>
-`;
+  }
 }
 
 function searchButton(event) {

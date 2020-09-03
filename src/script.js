@@ -91,11 +91,11 @@ function displayNYForecast(response) {
                 alt= "${forecastInfo.weather[0].description}"
               />
               <br />
-              <div class="top-temp">${Math.round(
+              <div class="top-temp">${Math.ceil(
                 forecastInfo.main.temp_max
               )}°C</div>
               <br />
-              <div class="bottom-temp">${Math.round(
+              <div class="bottom-temp">${Math.floor(
                 forecastInfo.main.temp_min
               )}°C</div>
             </div>
@@ -183,11 +183,11 @@ function displayWeatherForecast(forecast) {
                 alt= "${forecastInfo.weather[0].description}"
               />
               <br />
-              <div class="top-temp">${Math.round(
+              <div class="top-temp">${Math.ceil(
                 forecastInfo.main.temp_max
               )}°C</div>
               <br />
-              <div class="bottom-temp">${Math.round(
+              <div class="bottom-temp">${Math.floor(
                 forecastInfo.main.temp_min
               )}°C</div>
             </div>

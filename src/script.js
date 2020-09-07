@@ -56,18 +56,11 @@ function formatHours(timestamp) {
   return `${hour}:${minute}`;
 }
 
-//showing the currection humidity and wind icons
+/*showing the currection humidity and wind icons
 
 function displayWeatherCondition(response) {
-  document.querySelector(".current-state").innerHTML = response.data.name;
-  document.querySelector("h4").innerHTML = `${Math.round(
-    response.data.main.temp
-  )}°C`;
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = ` ${Math.round(
-    response.data.wind.speed
-  )} mph`;
-}
+
+}*/
 
 //This is information that will automatically show up when the page is rendered//
 
@@ -158,6 +151,15 @@ function displayWeatherCondition(response) {
     `alt`,
     `${response.data.weather[0].description}`
   );
+
+  document.querySelector(".current-state").innerHTML = response.data.name;
+  document.querySelector("h4").innerHTML = `${Math.round(
+    response.data.main.temp
+  )}°C`;
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = ` ${Math.round(
+    response.data.wind.speed
+  )} mph`;
 }
 
 //this section  will display the correct forecast information//
